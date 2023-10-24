@@ -42,7 +42,7 @@ describe('a GetComment entities', () => {
     // Assert
     expect(getComment.id).toEqual(payload.id);
     expect(getComment.content).toEqual(payload.content);
-    expect(getComment.date).toEqual(payload.date);
+    expect(getComment.date).toEqual(payload.created_at);
     expect(getComment.username).toEqual(payload.username);
   });
 
@@ -62,7 +62,7 @@ describe('a GetComment entities', () => {
     // Assert
     expect(getComment.id).toEqual(payload.id);
     expect(getComment.content).toEqual('**komentar telah dihapus**');
-    expect(getComment.date).toEqual(payload.date);
+    expect(getComment.date).toEqual(payload.created_at);
     expect(getComment.username).toEqual(payload.username);
   });
 });

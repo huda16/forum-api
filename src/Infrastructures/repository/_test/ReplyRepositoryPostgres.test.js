@@ -142,7 +142,7 @@ describe('CommentRepositoryPostgres', () => {
     });
   });
 
-  describe('getRepliesByCommentId function', () => {
+  describe('getRepliesByThreadId function', () => {
     it('should return empty replies', async () => {
       // Arrange
       await UsersTableTestHelper.addUser({ username: 'dicoding' });
@@ -151,7 +151,7 @@ describe('CommentRepositoryPostgres', () => {
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, {});
 
       // Action
-      const replyRepository = await replyRepositoryPostgres.getRepliesByCommentId('comment-123');
+      const replyRepository = await replyRepositoryPostgres.getRepliesByThreadId('thread-123');
 
       // Assert
       expect(replyRepository).toEqual([]);
@@ -167,7 +167,7 @@ describe('CommentRepositoryPostgres', () => {
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, {});
 
       // Action
-      const replyRepository = await replyRepositoryPostgres.getRepliesByCommentId('comment-123');
+      const replyRepository = await replyRepositoryPostgres.getRepliesByThreadId('thread-123');
 
       // Assert
       expect(replyRepository.length).toBe(1);

@@ -55,14 +55,14 @@ class ReplyRepositoryPostgres extends ReplyRepository {
     if (reply.owner !== owner) throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
   }
 
-  async getRepliesByCommentId(commentId) {
+  async getRepliesByThreadId(threadId) {
     const query = {
-      text: `SELECT replies.id, replies.content, users.username, replies.comment_id, replies.is_delete, replies.created_at
+      text: `SELECT replies.id, replies.comment_id, replies.created_at, replies.content, replies.is_delete, users.username 
           FROM replies
-          LEFT JOIN users ON replies.owner = users.id
-          LEFT JOIN comments ON comments.id = replies.comment_id
-          WHERE replies.comment_id = $1 ORDER BY replies.created_at ASC`,
-      values: [commentId],
+          LEFT JOIN users ON users.id = replies.owner 
+          LEFT JOIN comments ON comments.id = replies.comment_id 
+          WHERE comments.thread_id = $1 ORDER BY replies.created_at ASC`,
+      values: [threadId],
     };
 
     const results = await this._pool.query(query);

@@ -6,7 +6,7 @@ class GetComment {
 
     this.id = id;
     this.content = isDelete ? '**komentar telah dihapus**' : content;
-    this.created_at = created_at;
+    this.date = created_at;
     this.username = username;
   }
 
