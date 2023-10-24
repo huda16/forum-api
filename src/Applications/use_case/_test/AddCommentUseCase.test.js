@@ -24,7 +24,7 @@ describe('AddCommentUseCase', () => {
     const mockCommentRepository = new CommentRepository();
 
     mockCommentRepository.addComment = jest.fn(() => Promise.resolve(mockAddedComment));
-    mockThreadRepository.getThreadById = jest.fn(() => Promise.reject(new NotFoundError()));
+    mockThreadRepository.verifyThreadAvailability = jest.fn(() => Promise.reject(new NotFoundError()));
 
     // Action
     const addCommentUseCase = new AddCommentUseCase({
@@ -35,7 +35,7 @@ describe('AddCommentUseCase', () => {
     // Assert
     await expect(() => addCommentUseCase.execute(useCasePayload))
       .rejects.toThrowError(NotFoundError);
-    expect(mockThreadRepository.getThreadById).toBeCalledWith('thread-234');
+    expect(mockThreadRepository.verifyThreadAvailability).toBeCalledWith('thread-234');
     expect(mockCommentRepository.addComment).not.toBeCalled();
   });
 
@@ -61,7 +61,7 @@ describe('AddCommentUseCase', () => {
     const mockCommentRepository = new CommentRepository();
 
     /** mocking needed function */
-    mockThreadRepository.getThreadById = jest.fn(() => Promise.resolve());
+    mockThreadRepository.verifyThreadAvailability = jest.fn(() => Promise.resolve());
     mockCommentRepository.addComment = jest.fn(() => Promise.resolve(mockAddedComment));
 
     /** creating use case instance */
@@ -74,7 +74,7 @@ describe('AddCommentUseCase', () => {
     const addedComment = await addCommentUseCase.execute(useCasePayload);
 
     // Assert
-    expect(mockThreadRepository.getThreadById).toBeCalledWith('thread-123');
+    expect(mockThreadRepository.verifyThreadAvailability).toBeCalledWith('thread-123');
     expect(addedComment).toStrictEqual(new AddedComment({
       id: 'comment-123',
       content: useCasePayload.content,

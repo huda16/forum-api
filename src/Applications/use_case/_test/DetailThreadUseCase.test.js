@@ -13,19 +13,20 @@ describe('DetailThreadUseCase', () => {
     const useCasePayload = {
       threadId: 'thread-123',
     };
+    const date = new Date().toISOString();
 
     const mockThread = new GetThread({
       id: 'thread-123',
       title: 'Dicoding',
       body: 'dicoding',
-      created_at: new Date().toISOString(),
+      created_at: date,
       username: 'dicoding',
     });
 
     const mockCommentOne = new GetComment({
       id: 'comment-123',
       username: 'dicoding',
-      created_at: new Date().toISOString(),
+      created_at: date,
       content: 'dicoding',
       is_delete: true,
     });
@@ -33,7 +34,7 @@ describe('DetailThreadUseCase', () => {
     const mockCommentTwo = new GetComment({
       id: 'comment-234',
       username: 'dicoding',
-      created_at: new Date().toISOString(),
+      created_at: date,
       content: 'dicoding',
       is_delete: false,
     });
@@ -41,7 +42,7 @@ describe('DetailThreadUseCase', () => {
     const mockReply = new GetReply({
       id: 'reply-123',
       username: 'dicoding',
-      created_at: new Date().toISOString(),
+      created_at: date,
       content: 'dicoding',
       is_delete: false,
       comment_id: 'comment-123',
@@ -71,13 +72,36 @@ describe('DetailThreadUseCase', () => {
     expect(mockCommentRepository.getCommentsByThreadId).toBeCalledWith('thread-123');
     expect(mockReplyRepository.getRepliesByThreadId).toBeCalledWith('thread-123');
     expect(detailThread).toEqual(new DetailThread({
-      thread: mockThread,
+      thread: {
+        id: 'thread-123',
+        title: 'Dicoding',
+        body: 'dicoding',
+        date: date,
+        username: 'dicoding',
+      },
       comments: [
-        mockCommentOne,
-        mockCommentTwo,
+        {
+          id: 'comment-123',
+          username: 'dicoding',
+          date: date,
+          content: '**komentar telah dihapus**',
+        },
+        {
+          id: 'comment-234',
+          username: 'dicoding',
+          date: date,
+          content: 'dicoding',
+        },
       ],
       replies: [
-        mockReply,
+        {
+          id: 'reply-123',
+          username: 'dicoding',
+          created_at: date,
+          content: 'dicoding',
+          is_delete: false,
+          comment_id: 'comment-123',
+        },
       ],
     }));
   });
