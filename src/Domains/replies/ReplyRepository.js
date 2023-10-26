@@ -15,7 +15,7 @@ class ReplyRepository {
     throw new Error('REPLY_REPOSITORY.METHOD_NOT_IMPLEMENTED');
   }
 
-  async getReplyById(id) {
+  async verifyReplyAvailability(id) {
     throw new Error('REPLY_REPOSITORY.METHOD_NOT_IMPLEMENTED');
   }
 }

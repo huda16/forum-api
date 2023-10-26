@@ -182,13 +182,13 @@ describe('CommentRepositoryPostgres', () => {
     });
   });
 
-  describe('getReplyById function', () => {
+  describe('verifyReplyAvailability function', () => {
     it('should throw NotFoundError when a reply not found', async () => {
       // Arrange
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, {});
 
       // Action & Assert
-      await expect(replyRepositoryPostgres.getReplyById('reply-234')).rejects.toThrowError(NotFoundError);
+      await expect(replyRepositoryPostgres.verifyReplyAvailability('reply-234')).rejects.toThrowError(NotFoundError);
     });
 
     it('should not throw NotFoundError when a reply is found', async () => {
@@ -200,7 +200,7 @@ describe('CommentRepositoryPostgres', () => {
       const replyRepositoryPostgres = new ReplyRepositoryPostgres(pool, {});
 
       // Action & Assert
-      await expect(replyRepositoryPostgres.getReplyById('reply-123')).resolves.not.toThrowError(NotFoundError);
+      await expect(replyRepositoryPostgres.verifyReplyAvailability('reply-123')).resolves.not.toThrowError(NotFoundError);
     });
   });
 });

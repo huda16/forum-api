@@ -80,17 +80,15 @@ class ReplyRepositoryPostgres extends ReplyRepository {
     });
   }
 
-  async getReplyById(id) {
+  async verifyReplyAvailability(id) {
     const query = {
-      text: `SELECT * FROM replies WHERE id = $1`,
+      text: `SELECT id FROM replies WHERE id = $1`,
       values: [id],
     };
 
     const result = await this._pool.query(query);
 
     if (!result.rowCount) throw new NotFoundError('Balasan tidak ditemukan');
-
-    return result.rows[0];
   }
 }
 
