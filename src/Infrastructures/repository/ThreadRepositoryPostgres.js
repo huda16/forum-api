@@ -43,7 +43,7 @@ class ThreadRepositoryPostgres extends ThreadRepository {
       username: result.rows[0].username,
       created_at: result.rows[0].created_at.toISOString(),
     };
-    
+
     return new GetThread(payload);
   }
 

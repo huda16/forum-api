@@ -45,7 +45,7 @@ describe('DetailThread entities', () => {
         id: 'thread-123',
         title: 'Dicoding',
         body: 'Dicoding Indonesia',
-        date: date,
+        date,
         username: 'dicoding',
       },
       comments: [

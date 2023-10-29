@@ -36,7 +36,9 @@ describe('a GetThread entities', () => {
     };
 
     // Action
-    const { id, title, body, username, date } = new GetThread(payload);
+    const {
+      id, title, body, username, date,
+    } = new GetThread(payload);
 
     // Assert
     expect(id).toEqual(payload.id);

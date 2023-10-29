@@ -2,7 +2,9 @@ class GetReply {
   constructor(payload) {
     this._verifyPayload(payload);
 
-    const { id, content, created_at, username, comment_id, is_delete: isDelete } = payload;
+    const {
+      id, content, created_at, username, comment_id, is_delete: isDelete,
+    } = payload;
 
     this.id = id;
     this.content = isDelete ? '**balasan telah dihapus**' : content;
@@ -12,7 +14,9 @@ class GetReply {
   }
 
   _verifyPayload(payload) {
-    const { id, content, created_at, username, comment_id, is_delete: isDelete } = payload;
+    const {
+      id, content, created_at, username, comment_id, is_delete: isDelete,
+    } = payload;
 
     if (!id || !content || !created_at || !username || !comment_id || isDelete === undefined) {
       throw new Error('GET_REPLY.NOT_CONTAIN_NEEDED_PROPERTY');

@@ -174,7 +174,7 @@ describe('CommentRepositoryPostgres', () => {
       expect(replyRepository[0]).toEqual(new GetReply({
         id: 'reply-123',
         content: 'dicoding',
-        created_at: "2023-10-22T22:36:42.192Z",
+        created_at: '2023-10-22T22:36:42.192Z',
         username: 'dicoding',
         comment_id: 'comment-123',
         is_delete: false,

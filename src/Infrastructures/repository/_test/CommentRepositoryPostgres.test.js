@@ -162,7 +162,7 @@ describe('CommentRepositoryPostgres', () => {
       expect(commentRepository[0]).toEqual(new GetComment({
         id: 'comment-123',
         content: 'dicoding',
-        created_at: "2023-10-22T22:36:42.192Z",
+        created_at: '2023-10-22T22:36:42.192Z',
         username: 'dicoding',
         is_delete: false,
       }));

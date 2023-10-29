@@ -50,7 +50,6 @@ class ReplyRepositoryPostgres extends ReplyRepository {
 
     if (result.rowCount === 0) throw new NotFoundError('Balasan gagal dihapus. Id tidak ditemukan');
 
-
     const reply = result.rows[0];
     if (reply.owner !== owner) throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
   }
@@ -74,7 +73,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
         created_at: result.created_at.toISOString(),
         username: result.username,
         comment_id: result.comment_id,
-        is_delete: result.is_delete
+        is_delete: result.is_delete,
       };
       return new GetReply(payload);
     });
@@ -82,7 +81,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
 
   async verifyReplyAvailability(id) {
     const query = {
-      text: `SELECT id FROM replies WHERE id = $1`,
+      text: 'SELECT id FROM replies WHERE id = $1',
       values: [id],
     };
 

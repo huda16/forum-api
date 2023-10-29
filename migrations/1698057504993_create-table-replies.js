@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 
-exports.up = pgm => {
+exports.up = (pgm) => {
   pgm.createTable('replies', {
     id: {
       type: 'VARCHAR(50)',
@@ -25,7 +25,7 @@ exports.up = pgm => {
     is_delete: {
       type: 'BOOL',
       notNull: true,
-      default: false
+      default: false,
     },
     created_at: {
       type: 'TIMESTAMP',
@@ -38,6 +38,6 @@ exports.up = pgm => {
   });
 };
 
-exports.down = pgm => {
+exports.down = (pgm) => {
   pgm.dropTable('replies');
 };

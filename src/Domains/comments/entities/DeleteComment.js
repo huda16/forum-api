@@ -9,7 +9,7 @@ class DeleteComment {
     this.threadId = threadId;
   }
 
-  _verifyPayload({ commentId, owner, threadId}) {
+  _verifyPayload({ commentId, owner, threadId }) {
     if (!commentId || !owner || !threadId) {
       throw new Error('DELETE_COMMENT.NOT_CONTAIN_NEEDED_PROPERTY');
     }

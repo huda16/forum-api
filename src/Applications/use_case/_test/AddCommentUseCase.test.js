@@ -11,9 +11,9 @@ describe('AddCommentUseCase', () => {
     const useCasePayload = {
       threadId: 'thread-234',
       content: 'dicoding',
-      owner: 'user-123'
+      owner: 'user-123',
     };
-    
+
     const mockAddedComment = new AddedComment({
       id: 'comment-123',
       content: useCasePayload.content,
@@ -24,7 +24,8 @@ describe('AddCommentUseCase', () => {
     const mockCommentRepository = new CommentRepository();
 
     mockCommentRepository.addComment = jest.fn(() => Promise.resolve(mockAddedComment));
-    mockThreadRepository.verifyThreadAvailability = jest.fn(() => Promise.reject(new NotFoundError()));
+    mockThreadRepository
+      .verifyThreadAvailability = jest.fn(() => Promise.reject(new NotFoundError()));
 
     // Action
     const addCommentUseCase = new AddCommentUseCase({
@@ -47,7 +48,7 @@ describe('AddCommentUseCase', () => {
     const useCasePayload = {
       threadId: 'thread-123',
       content: 'dicoding',
-      owner: 'user-123'
+      owner: 'user-123',
     };
 
     const mockAddedComment = new AddedComment({

@@ -50,7 +50,6 @@ class CommentRepositoryPostgres extends CommentRepository {
 
     if (result.rowCount === 0) throw new NotFoundError('Komentar gagal dihapus. Id tidak ditemukan');
 
-
     const comment = result.rows[0];
     if (comment.owner !== owner) throw new AuthorizationError('Anda tidak berhak mengakses resource ini');
   }
@@ -72,7 +71,7 @@ class CommentRepositoryPostgres extends CommentRepository {
         content: result.content,
         created_at: result.created_at.toISOString(),
         username: result.username,
-        is_delete: result.is_delete
+        is_delete: result.is_delete,
       };
       return new GetComment(payload);
     });
@@ -80,7 +79,7 @@ class CommentRepositoryPostgres extends CommentRepository {
 
   async verifyCommentAvailability(id) {
     const query = {
-      text: `SELECT id FROM comments WHERE id = $1`,
+      text: 'SELECT id FROM comments WHERE id = $1',
       values: [id],
     };
 

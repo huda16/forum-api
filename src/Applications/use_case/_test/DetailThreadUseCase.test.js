@@ -76,20 +76,20 @@ describe('DetailThreadUseCase', () => {
         id: 'thread-123',
         title: 'Dicoding',
         body: 'dicoding',
-        date: date,
+        date,
         username: 'dicoding',
       },
       comments: [
         {
           id: 'comment-123',
           username: 'dicoding',
-          date: date,
+          date,
           content: '**komentar telah dihapus**',
         },
         {
           id: 'comment-234',
           username: 'dicoding',
-          date: date,
+          date,
           content: 'dicoding',
         },
       ],

@@ -14,7 +14,9 @@ class RepliesHandler {
     const { content } = request.payload;
     const { id: owner } = request.auth.credentials;
     const addReplyUseCase = this._container.getInstance(AddReplyUseCase.name);
-    const addedReply = await addReplyUseCase.execute({ threadId, commentId,  content, owner });
+    const addedReply = await addReplyUseCase.execute({
+      threadId, commentId, content, owner,
+    });
 
     const response = h.response({
       status: 'success',
@@ -30,7 +32,9 @@ class RepliesHandler {
     const { threadId, commentId, replyId } = request.params;
     const { id: owner } = request.auth.credentials;
     const deleteReplyUseCase = this._container.getInstance(DeleteReplyUseCase.name);
-    await deleteReplyUseCase.execute({ replyId, threadId, commentId, owner });
+    await deleteReplyUseCase.execute({
+      replyId, threadId, commentId, owner,
+    });
 
     const response = h.response({
       status: 'success',

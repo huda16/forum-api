@@ -16,7 +16,7 @@ describe('AddReplyUseCase', () => {
       threadId: 'thread-123',
       commentId: 'comment-123',
       content: 'dicoding',
-      owner: 'user-123'
+      owner: 'user-123',
     };
 
     const mockAddedReply = new AddedReply({

@@ -2,7 +2,9 @@ class GetThread {
   constructor(payload) {
     this._verifyPayload(payload);
 
-    const { id, title, body, username, created_at } = payload;
+    const {
+      id, title, body, username, created_at,
+    } = payload;
 
     this.id = id;
     this.title = title;
@@ -12,7 +14,9 @@ class GetThread {
   }
 
   _verifyPayload(payload) {
-    const { id, title, body, username, created_at } = payload;
+    const {
+      id, title, body, username, created_at,
+    } = payload;
     if (!id || !title || !body || !username || !created_at) {
       throw new Error('GET_THREAD.NOT_CONTAIN_NEEDED_PROPERTY');
     }

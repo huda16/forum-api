@@ -33,7 +33,7 @@ describe('a GetComment entities', () => {
       content: 'dicoding',
       created_at: new Date().toISOString(),
       username: 'dicoding',
-      is_delete: false
+      is_delete: false,
     };
 
     // Action
@@ -53,7 +53,7 @@ describe('a GetComment entities', () => {
       content: 'dicoding',
       created_at: new Date().toISOString(),
       username: 'dicoding',
-      is_delete: true
+      is_delete: true,
     };
 
     // Action

@@ -9,7 +9,7 @@ class AddComment {
     this.threadId = threadId;
   }
 
-  _verifyPayload({ content, owner, threadId}) {
+  _verifyPayload({ content, owner, threadId }) {
     if (!content || !owner || !threadId) {
       throw new Error('ADD_COMMENT.NOT_CONTAIN_NEEDED_PROPERTY');
     }

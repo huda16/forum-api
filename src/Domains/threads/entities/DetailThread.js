@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: "error" */
 const GetThread = require('./GetThread');
 
 class DetailThread {

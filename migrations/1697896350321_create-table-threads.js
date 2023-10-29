@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
-exports.up = pgm => {
-    pgm.createTable('threads', {
+exports.up = (pgm) => {
+  pgm.createTable('threads', {
     id: {
       type: 'VARCHAR(50)',
       primaryKey: true,
@@ -28,6 +28,6 @@ exports.up = pgm => {
   });
 };
 
-exports.down = pgm => {
+exports.down = (pgm) => {
   pgm.dropTable('threads');
 };

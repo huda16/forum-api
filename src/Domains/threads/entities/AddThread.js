@@ -9,7 +9,7 @@ class AddThread {
     this.owner = owner;
   }
 
-  _verifyPayload({ title, body, owner}) {
+  _verifyPayload({ title, body, owner }) {
     if (!title || !body || !owner) {
       throw new Error('ADD_THREAD.NOT_CONTAIN_NEEDED_PROPERTY');
     }

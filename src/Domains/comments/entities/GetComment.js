@@ -2,7 +2,9 @@ class GetComment {
   constructor(payload) {
     this._verifyPayload(payload);
 
-    const { id, content, created_at, username, is_delete: isDelete } = payload;
+    const {
+      id, content, created_at, username, is_delete: isDelete,
+    } = payload;
 
     this.id = id;
     this.content = isDelete ? '**komentar telah dihapus**' : content;
@@ -11,7 +13,9 @@ class GetComment {
   }
 
   _verifyPayload(payload) {
-    const { id, content, created_at, username, is_delete: isDelete } = payload;
+    const {
+      id, content, created_at, username, is_delete: isDelete,
+    } = payload;
 
     if (!id || !content || !created_at || !username || isDelete === undefined) {
       throw new Error('GET_COMMENT.NOT_CONTAIN_NEEDED_PROPERTY');
