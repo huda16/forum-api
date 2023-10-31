@@ -70,8 +70,9 @@ describe('ThreadRepositoryPostgres', () => {
 
     it('should not throw NotFoundError when thread is found', async () => {
       // Arrange
+      const createdAt = '2023-10-23T19:40:16.238Z';
       await UsersTableTestHelper.addUser({ username: 'dicoding' });
-      await ThreadsTableTestHelper.addThread({ title: 'Dicoding', created_at: '2023-10-23T19:40:16.238Z' });
+      await ThreadsTableTestHelper.addThread({ title: 'Dicoding', created_at: createdAt });
       const threadRepositoryPostgres = new ThreadRepositoryPostgres(pool, {});
 
       // Action & Assert
@@ -81,7 +82,7 @@ describe('ThreadRepositoryPostgres', () => {
         id: 'thread-123',
         title: 'Dicoding',
         body: 'secret',
-        created_at: '2023-10-23T12:40:16.238Z',
+        created_at: createdAt,
         username: 'dicoding',
       }));
     });

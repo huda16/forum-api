@@ -70,7 +70,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
       const payload = {
         id: result.id,
         content: result.content,
-        created_at: result.created_at.toISOString(),
+        created_at: new Date(result.created_at).toISOString(),
         username: result.username,
         comment_id: result.comment_id,
         is_delete: result.is_delete,

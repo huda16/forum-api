@@ -3,12 +3,10 @@ const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
 const AddedReply = require('../../../Domains/replies/entities/AddedReply');
 const AddReply = require('../../../Domains/replies/entities/AddReply');
 const pool = require('../../database/postgres/pool');
-const CommentRepositoryPostgres = require('../CommentRepositoryPostgres');
 const CommentsTableTestHelper = require('../../../../tests/CommentsTableTestHelper');
 const RepliesTableTestHelper = require('../../../../tests/RepliesTableTestHelper');
 const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
 const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
-const GetComment = require('../../../Domains/comments/entities/GetComment');
 const ReplyRepositoryPostgres = require('../ReplyRepositoryPostgres');
 const GetReply = require('../../../Domains/replies/entities/GetReply');
 
@@ -174,7 +172,7 @@ describe('CommentRepositoryPostgres', () => {
       expect(replyRepository[0]).toEqual(new GetReply({
         id: 'reply-123',
         content: 'dicoding',
-        created_at: '2023-10-22T22:36:42.192Z',
+        created_at: createdAt,
         username: 'dicoding',
         comment_id: 'comment-123',
         is_delete: false,
