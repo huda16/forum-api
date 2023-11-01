@@ -56,9 +56,10 @@ class CommentRepositoryPostgres extends CommentRepository {
 
   async getCommentsByThreadId(threadId) {
     const query = {
-      text: `SELECT comments.id, comments.content, users.username, comments.is_delete, comments.created_at
+      text: `SELECT comments.id, comments.content, users.username, comments.is_delete, comments.created_at, count(DISTINCT likes.id)
           FROM comments
           LEFT JOIN users ON comments.owner = users.id
+          LEFT JOIN likes ON comments.id = likes.comment_id
           WHERE comments.thread_id = $1 GROUP BY comments.id, users.username ORDER BY comments.created_at ASC`,
       values: [threadId],
     };
@@ -72,6 +73,7 @@ class CommentRepositoryPostgres extends CommentRepository {
         created_at: result.created_at.toISOString(),
         username: result.username,
         is_delete: result.is_delete,
+        count: result.count,
       };
       return new GetComment(payload);
     });

@@ -29,6 +29,7 @@ describe('DetailThreadUseCase', () => {
       created_at: date,
       content: 'dicoding',
       is_delete: true,
+      count: '0',
     });
 
     const mockCommentTwo = new GetComment({
@@ -37,6 +38,7 @@ describe('DetailThreadUseCase', () => {
       created_at: date,
       content: 'dicoding',
       is_delete: false,
+      count: '0',
     });
 
     const mockReply = new GetReply({
@@ -85,12 +87,14 @@ describe('DetailThreadUseCase', () => {
           username: 'dicoding',
           date,
           content: '**komentar telah dihapus**',
+          likeCount: 0,
         },
         {
           id: 'comment-234',
           username: 'dicoding',
           date,
           content: 'dicoding',
+          likeCount: 0,
         },
       ],
       replies: [

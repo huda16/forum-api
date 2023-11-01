@@ -1,4 +1,5 @@
 const CommentsTableTestHelper = require('../../../../tests/CommentsTableTestHelper');
+const LikesTableTestHelper = require('../../../../tests/LikesTableTestHelper');
 const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
 const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
 const container = require('../../container');
@@ -14,6 +15,7 @@ describe('/threads endpoint', () => {
     await ThreadsTableTestHelper.cleanTable();
     await UsersTableTestHelper.cleanTable();
     await CommentsTableTestHelper.cleanTable();
+    await LikesTableTestHelper.cleanTable();
   });
 
   describe('when POST /threads', () => {
@@ -280,6 +282,9 @@ describe('/threads endpoint', () => {
       expect(responseJson.data.thread.date).toBeDefined();
       expect(responseJson.data.thread.username).toBeDefined();
       expect(responseJson.data.thread.comments).toBeDefined();
+      expect(responseJson.data.thread.comments.length).toBe(1);
+      expect(responseJson.data.thread.comments[0].likeCount).toBeDefined();
+      expect(responseJson.data.thread.comments[0].likeCount).toBe(1);
       expect(responseJson.data.thread.comments[0].content).toBe('**komentar telah dihapus**');
       expect(responseJson.data.thread.comments[0].replies).toBeDefined();
       expect(responseJson.data.thread.comments[0].replies[0].content).toBe('**balasan telah dihapus**');
