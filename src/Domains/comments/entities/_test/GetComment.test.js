@@ -20,6 +20,7 @@ describe('a GetComment entities', () => {
       created_at: {},
       username: ['dicoding'],
       is_delete: ['dicoding'],
+      count: '0',
     };
 
     // Action and Assert
@@ -34,6 +35,7 @@ describe('a GetComment entities', () => {
       created_at: new Date().toISOString(),
       username: 'dicoding',
       is_delete: false,
+      count: '0',
     };
 
     // Action
@@ -44,6 +46,7 @@ describe('a GetComment entities', () => {
     expect(getComment.content).toEqual(payload.content);
     expect(getComment.date).toEqual(payload.created_at);
     expect(getComment.username).toEqual(payload.username);
+    expect(getComment.likeCount).toEqual(0);
   });
 
   it('should create GetComment object correctly when is_delete is true', () => {
@@ -54,6 +57,7 @@ describe('a GetComment entities', () => {
       created_at: new Date().toISOString(),
       username: 'dicoding',
       is_delete: true,
+      count: '0',
     };
 
     // Action
@@ -64,5 +68,6 @@ describe('a GetComment entities', () => {
     expect(getComment.content).toEqual('**komentar telah dihapus**');
     expect(getComment.date).toEqual(payload.created_at);
     expect(getComment.username).toEqual(payload.username);
+    expect(getComment.likeCount).toEqual(0);
   });
 });

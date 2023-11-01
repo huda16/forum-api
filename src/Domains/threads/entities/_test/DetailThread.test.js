@@ -55,6 +55,7 @@ describe('DetailThread entities', () => {
           created_at: date,
           content: 'dicoding',
           is_delete: false,
+          count: '0',
         }),
       ],
       replies: [
@@ -84,6 +85,7 @@ describe('DetailThread entities', () => {
         username: 'dicoding',
         date,
         content: 'dicoding',
+        likeCount: 0,
         replies: [
           {
             id: 'reply-123',
